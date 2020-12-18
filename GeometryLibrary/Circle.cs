@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using MathLibrary;
+using Newtonsoft.Json;
 using Point = MathLibrary.Point;
 
 namespace GeometryLibrary
@@ -13,7 +14,9 @@ namespace GeometryLibrary
     /// </summary>
     public class Circle : Curve, ISurface
     {
+        [JsonIgnore]
         public const string StartMessage = "Please select the center point of the circle.";
+        [JsonIgnore]
         public const string EndMessage = "Please select a point at the circle's circumference.";
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace GeometryLibrary
         /// <summary>
         /// The length of the circle.
         /// </summary>
+        [JsonIgnore]
         public override double Length => 2.0 * Math.PI * Radius;
 
         /// <summary>
@@ -66,6 +70,7 @@ namespace GeometryLibrary
         /// <summary>
         /// The area of the circle.
         /// </summary>
+        [JsonIgnore]
         public double Area => Math.PI * Radius * Radius;
 
         /// <summary>

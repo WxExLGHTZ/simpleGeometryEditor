@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Text;
@@ -14,11 +15,15 @@ namespace GeometryLibrary
         /// <summary>
         /// The length of the curve.
         /// </summary>
+
+        [JsonIgnore]
         public abstract double Length { get; }
 
         /// <summary>
         /// The pen used to draw the different types of curves. 
         /// </summary>
+        
+        [JsonIgnore]
         public Pen DrawPen { get; set; } = new Pen(Color.Black);
 
         /// <summary>

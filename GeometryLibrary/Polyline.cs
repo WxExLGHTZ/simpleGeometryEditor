@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using MathLibrary;
+using Newtonsoft.Json;
 using Point = MathLibrary.Point;
 
 namespace GeometryLibrary
@@ -14,14 +15,19 @@ namespace GeometryLibrary
     /// </summary>
     public class Polyline : Curve, ISurface
     {
+        [JsonIgnore]
         public const string StartMessage = "Please select the start point of the polyline.";
+        [JsonIgnore]
         public const string NextMessage = "Please select the next point of the polyline with the left mouse button or click right to cancel.";
+        [JsonIgnore]
         public const string EndMessage = "Please select the next point of the polyline with the left mouse button or click right to end.";
+      
         private readonly List<Point> _points = new List<Point>();
 
         /// <summary>
         /// The length of the polyline.
         /// </summary>
+        [JsonIgnore]
         public override double Length
         {
             get
@@ -39,6 +45,7 @@ namespace GeometryLibrary
         /// <summary>
         /// Is the polyline closed, i.e. are the first and the last point the same?
         /// </summary>
+        [JsonIgnore]
         public bool IsClosed
         {
             get
@@ -55,6 +62,7 @@ namespace GeometryLibrary
         /// <summary>
         /// Is the polyline planar, i.e. lay all the points in the same plane?
         /// </summary>
+        [JsonIgnore]
         public bool IsPlanar
         {
             get
@@ -100,6 +108,7 @@ namespace GeometryLibrary
             }
         }
 
+        [JsonIgnore]
         private IEnumerable<Vector> LineSegments
         {
             get
@@ -117,11 +126,13 @@ namespace GeometryLibrary
         /// <summary>
         /// Is the polyline valid, i.e. does it contain at least 2 points.
         /// </summary>
+        [JsonIgnore]
         public bool IsValid => _points.Count >= 2;
 
         /// <summary>
         /// The area of the polyline.
         /// </summary>
+        [JsonIgnore]
         public double Area
         {
             get
@@ -159,6 +170,7 @@ namespace GeometryLibrary
         /// Adds the passed point to the polyline.
         /// </summary>
         /// <param name="newPoint">The point to add.</param>
+        
         public void AddPoint(Point newPoint)
         {
             _points.Add(newPoint);

@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Text;
 using MathLibrary;
+using Newtonsoft.Json;
 using Point = MathLibrary.Point;
 
 namespace GeometryLibrary
@@ -108,7 +110,23 @@ namespace GeometryLibrary
 
         public void Save(string fileName)
         {
+            var serializer = new JsonSerializer { TypeNameHandling = TypeNameHandling.Auto };
 
+            using (TextWriter writer = File.CreateText(fileName))
+            {
+                serializer.Serialize(writer, _curves);
+            }
+        }
+
+        public void Load(string fileName)
+        {
+            var serializer = new JsonSerializer { TypeNameHandling = TypeNameHandling.Auto };
+
+            using (TextReader reader = File.OpenText(fileName))
+            {
+                _curves.Clear();
+                _curves.AddRange(serializer.Deserialize(reader, typeof(List<Curve>)) as List<Curve>);
+            }
         }
     }
 }

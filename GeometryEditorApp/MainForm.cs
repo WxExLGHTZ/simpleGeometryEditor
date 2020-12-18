@@ -136,17 +136,44 @@ namespace GeometryEditorApp
 
             DialogResult result = sfd.ShowDialog(this);
 
+            if (result == DialogResult.OK)
+            {
+                _drawing.Save(sfd.FileName);
+            }
         }
+        private void toolStripButtonSave_Click(object sender, EventArgs e)
+        {
+            SaveFileDialog sfd = new SaveFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = ".drw",
+                CheckPathExists = true,
+                Filter = "Drawing files (*.drw)|",
+                InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "Please select a drawing file to save."
+            };
+
+            DialogResult result = sfd.ShowDialog(this);
+
+            if (result == DialogResult.OK)
+            {
+                _drawing.Save(sfd.FileName);
+            }
+        }
+
 
         private void toolStripMenuItemNew_Click(object sender, EventArgs e)
         {
             _drawing.RemoveAllCurves();
         }
-
+        private void toolStripButtonNew_Click(object sender, EventArgs e)
+        {
+            _drawing.RemoveAllCurves();
+        }
         private void toolStripButtonOpen_Click(object sender, EventArgs e)
         {
 
-            OpenFileDialog sfd = new OpenFileDialog
+            OpenFileDialog ofd = new OpenFileDialog
             {
                 AddExtension = true,
                 DefaultExt = ".drw",
@@ -156,19 +183,38 @@ namespace GeometryEditorApp
                 Title = "Please select a drawing file to open."
             };
 
+            DialogResult result = ofd.ShowDialog(this);
 
+            if(result == DialogResult.OK)
+            {
+                _drawing.Load(ofd.FileName);
+            }
 
 
 
 
         }
 
+        private void toolStripMenuItemopen_Click(object sender, EventArgs e)
+        {
+            OpenFileDialog ofd = new OpenFileDialog
+            {
+                AddExtension = true,
+                DefaultExt = ".drw",
+                CheckFileExists = true,
+                Filter = "Drawing files (*.drw)|",
+                InitialDirectory = System.Environment.GetFolderPath(Environment.SpecialFolder.MyDocuments),
+                Title = "Please select a drawing file to open."
+            };
 
+            DialogResult result = ofd.ShowDialog(this);
 
+            if (result == DialogResult.OK)
+            {
+                _drawing.Load(ofd.FileName);
+            }
 
-
-
-
+        }
     }
 }
 

@@ -99,6 +99,7 @@
             this.toolStripMenuItemopen.Name = "toolStripMenuItemopen";
             this.toolStripMenuItemopen.Size = new System.Drawing.Size(253, 26);
             this.toolStripMenuItemopen.Text = "toolStripMenuItemOpen";
+            this.toolStripMenuItemopen.Click += new System.EventHandler(this.toolStripMenuItemopen_Click);
             // 
             // toolStripMenuItemSave
             // 
@@ -178,6 +179,7 @@
             this.toolStripButtonNew.Name = "toolStripButtonNew";
             this.toolStripButtonNew.Size = new System.Drawing.Size(29, 44);
             this.toolStripButtonNew.Text = "toolStripButtonNew";
+            this.toolStripButtonNew.Click += new System.EventHandler(this.toolStripButtonNew_Click);
             // 
             // toolStripButtonOpen
             // 
@@ -197,6 +199,7 @@
             this.toolStripButtonSave.Name = "toolStripButtonSave";
             this.toolStripButtonSave.Size = new System.Drawing.Size(29, 44);
             this.toolStripButtonSave.Text = "toolStripButtonSave";
+            this.toolStripButtonSave.Click += new System.EventHandler(this.toolStripButtonSave_Click);
             // 
             // toolStripSeparator2
             // 

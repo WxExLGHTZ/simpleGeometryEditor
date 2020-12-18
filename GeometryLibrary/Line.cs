@@ -5,6 +5,7 @@ using System.Text;
 using MathLibrary;
 using Point = MathLibrary.Point;
 using System.Windows.Forms;
+using Newtonsoft.Json;
 
 namespace GeometryLibrary
 {
@@ -13,7 +14,9 @@ namespace GeometryLibrary
     /// </summary>
     public class Line : Curve
     {
+        [JsonIgnore]
         public const string StartMessage = "Please select the start point of the line.";
+        [JsonIgnore]
         public const string EndMessage = "Please select the end point of the line.";
 
         /// <summary>
@@ -29,11 +32,13 @@ namespace GeometryLibrary
         /// <summary>
         /// The length of the line.
         /// </summary>
+        [JsonIgnore]
         public override double Length => StartPoint.DistanceTo(EndPoint);
 
         /// <summary>
         /// The direction of the line as a normalized vector
         /// </summary>
+        [JsonIgnore]
         public Vector Direction => new Vector(EndPoint.X - StartPoint.X, EndPoint.Y - StartPoint.Y, EndPoint.Z - StartPoint.Z).Normalize();
 
         /// <summary>
@@ -50,6 +55,7 @@ namespace GeometryLibrary
         /// </summary>
         /// <param name="startPoint">The start point.</param>
         /// <param name="endPoint">The end point.</param>
+        
         public Line(Point startPoint, Point endPoint)
         {
             this.StartPoint = startPoint;
